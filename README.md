@@ -1,6 +1,6 @@
 # React Native mini-course by Rocketseat
 
-Developing a link management app using the Expo framework.
+Developing a React Native app for link management using the Expo framework.
 
 ## Quick start
 
