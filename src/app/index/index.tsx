@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { View, Image, TouchableOpacity, FlatList, Modal, Text, Alert } from "react-native";
+import { View, Image, TouchableOpacity, FlatList, Modal, Text, Alert, Linking } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router, useFocusEffect } from "expo-router";
 
@@ -52,6 +52,15 @@ export default function Index(){
         ])
     }
 
+    async function handleOpen() {
+        try {
+            await Linking.openURL(link.url)
+        } catch (error) {
+            Alert.alert("Link", "Não foi possível abrir o link");
+            console.log(error)
+        }
+    }
+
     useFocusEffect(
         useCallback(() => {
             getLinks();
@@ -102,7 +111,7 @@ export default function Index(){
 
                         <View style={styles.modalFooter}>
                             <Option name="Excluir" icon="delete" variant ="secondary" onPress={handleRemove}/>
-                            <Option name="Abrir" icon="language" />
+                            <Option name="Abrir" icon="language" onPress={handleOpen}/>
                         </View>
                     </View>
                 </View>
